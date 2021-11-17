@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+{% include 'head.html' %}
+
+<body class="boxed-layout pt-40 pb-40 pt-sm-0" data-bg-img="{% static 'images/pattern/p2.png' %}">
+
+<div id="wrapper" class="clearfix">
+
+{% include 'preload.html' %}
+{% include 'header.html' %}
+
+{% block content %}{% endblock content %}
+
+{% include 'footer.html' %}
+{% include 'js.html' %}
+
+
+
+</div>
