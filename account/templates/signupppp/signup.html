@@ -1,0 +1,100 @@
+{% load static %}
+  <!-- Start main-content -->
+         <div class="main-content">
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/bg3.jpg' %}">
+               <div class="container pt-70 pb-20">
+                  <!-- Section Content -->
+                  <div class="section-content">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h2 class="title text-white">Contact</h2>
+                           <ol class="breadcrumb text-left text-black mt-10">
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">Pages</a></li>
+                              <li class="active text-gray-silver">Page Title</li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- Divider: Contact -->
+            <section class="divider">
+               <div class="container">
+                  <div class="row pt-30">
+                   
+                     <div class="col-md-8">
+                        <h3 class="line-bottom mt-0 mb-20">Login</h3>
+                        
+                        <!-- Contact Form -->
+                        <form id="contact_form" name="contact_form" class="" action="{% url 'account:sign_up' %}" method="POST">
+                         {% csrf_token %}
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input name="username" class="form-control required" type="text" placeholder="Enter Username">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input name="email" class="form-control" type="email" placeholder="Enter Email">
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input name="first_name" class="form-control required" type="text" placeholder="Enter First Name">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input name="last_name" class="form-control" type="text" placeholder="Enter Last Name">
+                                 </div>
+                              </div>
+                           </div>
+                          
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input name="phone" class="form-control required" type="tel" placeholder="Enter Phone">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <select name="type" class="form-control" id="cars">
+                                       <option value="Student">Student</option>
+                                       <option value="Committee">Committee</option>
+                                    
+                                 </select>
+                                   
+                                 </div>
+                              </div>
+                           </div>
+
+                            <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <input name="password" class="form-control required" type="password" placeholder="Enter Password">
+                                 </div>
+                              </div>
+                             
+                           </div>
+                          
+                          
+                           <div class="form-group">
+                              <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                              <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px" >Register</button>
+                            <a href="{% url 'account:sign_in' %}" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px">Login</a>
+                           </div>
+                        </form>
+                   
+                     </div>
+                  </div>
+               </div>
+            </section>
+        
+         </div>
+         <!-- end main-content -->

@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.base import Model
-from authentification.models import User
+from django.http import request
+from account.models import User
 import os
 import random
 
@@ -74,12 +75,18 @@ class Scholarship(BaseModel):
     scholarship_name =  models.CharField(max_length=255)
     school_name =  models.CharField(max_length=255)
     deadline_apply =  models.DateTimeField()
+    course = models.CharField(max_length=255,blank=True,null=True)
     deadline_review =  models.DateTimeField()
     scholarship_details =  models.TextField()
     web_link =  models.URLField()
-    scholarship_budget =  models.DecimalField(max_digits=20,decimal_places=2)
-    scholarship_type =  models.CharField(max_length=255)
+    scholarship_budget =  models.DecimalField(max_digits=20,decimal_places=2,blank=True,null=True)
+    scholarship_type =  models.CharField(max_length=255,blank=True,null =True)
     scholarship_country =  models.CharField(max_length=255)
+    gpa =  models.CharField(max_length=255,blank=True,null=True)
+    scholarship_age =  models.IntegerField(blank=True,null=True)
+    scholarship_employment =  models.BooleanField(default=False)
+    scholarship_thumbnail =  models.ImageField(upload_to =  upload_file_path,blank = True,null =  True)
+   
 
     def __str__(self):
         return self.school_name
@@ -112,6 +119,48 @@ class Response(BaseModel):
 
     def __str__(self):
         return str(self.feedback_id)
+
+
+class Slider(BaseModel):
+    header1 =  models.CharField(max_length=255)
+    header2 =  models.CharField(max_length=255)
+    body =  models.TextField()
+    image =  models.ImageField(upload_to =  upload_file_path)
+
+    def __str__(self):
+        return self.header1
+
+
+class AboutSection(BaseModel):
+    header1 =  models.CharField(max_length=255)
+    body = models.TextField()
+    thumbnail =  models.ImageField(upload_to =  upload_file_path)
+    video_url =  models.URLField()
+
+    def __str__(self):
+        return self.header1
+
+
+class UserProfile(BaseModel):
+    user_id =  models.ForeignKey(User,on_delete=models.CASCADE)
+    country =  models.CharField(max_length=255)
+    permanent_address =  models.CharField(max_length=255)
+    physical_address =  models.CharField(max_length=255)
+    scholarship_type = models.CharField(max_length=255)
+    grade_pont_average =  models.CharField(max_length=255,blank=True,null=True) # grade point average
+    image =  models.ImageField(upload_to = upload_file_path)
+    
+
+    def __str__(self):
+        return self.country
+
+
+
+
+
+
+
+
  
 
 

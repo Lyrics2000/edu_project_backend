@@ -6,7 +6,10 @@ from .models import (
     Scholarship,
     Application,
     Feedback,
-    Response
+    Response,
+    Slider,
+    AboutSection,
+    UserProfile
 )
 
 # Register your models here.
@@ -17,3 +20,6 @@ admin.site.register(Scholarship)
 admin.site.register(Application)
 admin.site.register(Feedback)
 admin.site.register(Response)
+admin.site.register(Slider)
+admin.site.register(AboutSection)
+admin.site.register(UserProfile)

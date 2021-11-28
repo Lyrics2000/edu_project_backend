@@ -1,0 +1,174 @@
+{% load static %}
+  <!-- Start main-content -->
+         <div class="main-content">
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/bg3.jpg' %}">
+               <div class="container pt-70 pb-20">
+                  <!-- Section Content -->
+                  <div class="section-content">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h2 class="title text-white">Fill Scholarship</h2>
+                           <ol class="breadcrumb text-left text-black mt-10">
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">Pages</a></li>
+                              <li class="active text-gray-silver">Page Title</li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- Divider: Contact -->
+            <section class="divider">
+               <div class="container">
+                  <div class="row pt-30">
+                   
+                     <div class="col-md-8">
+                        <h3 class="line-bottom mt-0 mb-20">Scholarship Details</h3>
+                        
+                        <!-- Contact Form -->
+                        <form id="contact_form" name="contact_form" class="" action="{% url 'mainapp:upload_scholarship' %}" method="POST" enctype="multipart/form-data">
+                         {% csrf_token %}
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label> Scholarship Name</label>
+                                    <input name="scholarship_name" class="form-control required" type="text" placeholder="Enter Scholarship Name">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label> School Name </label>
+                                    <input name="school_name" class="form-control" type="text" placeholder="Enter School Name">
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label> Deadline to apply</label>
+                                    <input name="deadline_to_apply" class="form-control required" type="date" placeholder="Enter Deadline To Apply">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label>Deadline to Review </label>
+                                    <input name="deadline_to_review" class="form-control" type="date" placeholder="Enter Deadline To Review">
+                                 </div>
+                              </div>
+                           </div>
+                          
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label> Scholarship Details </label>
+                                    <textarea name="scholarship_details" class="form-control required"></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                 <label>Web Link </label>
+                                    <input name="web_link" class="form-control" type="url" placeholder="Enter Web Link">
+                                 </div>
+                              </div>
+                           </div>
+
+                            <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label> Scholarship Budget </label>
+                                <select name="scholarship_budget" class="form-control" id="cars">
+                                       <option value="100000">Ksh 100000</option>
+                                       <option value="150000">Ksh 150000</option>
+                                       <option value="200000">Ksh 200000</option>
+                                       <option value="250000">Ksh 250000</option>
+                                       <option value="300000">Ksh 300000</option>
+                                    
+                                 </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                 <label>Scholarship Type</label>
+                                    <select name="scholarship_type" class="form-control" id="cars">
+                                       <option value="Full Scholarship">Full Scholarship</option>
+                                       <option value="Partial Scholarship">Partial Scholarship</option>
+                                       
+                                    
+                                 </select>
+                                 </div>
+                              </div>
+                           </div>
+
+                            <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label>Scholarship Country</label>
+                                    <input name="scholarship_country" class="form-control required" type="text" placeholder="Enter Scholarship Country">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label>Age Limit </label>
+                                    <input name="scholarship_age_limit" class="form-control" type="number" placeholder="Enter Age Limit">
+                                 </div>
+                              </div>
+                           </div>
+
+                             <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label>Employement Status</label>
+                                    <input name="scholarship_employment_status" class="form-control required" type="checkbox" >
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                 <label>Scholarship Image</label>
+                                    <input name="scholarship_image" class="form-control" type="file" placeholder="Enter Scholarship Image">
+                                 </div>
+                              </div>
+                           </div>
+
+                              <div class="row">
+                              <div class="col-sm-12">
+                                 <div class="form-group">
+                                 <label>Scholarship GPA</label>
+                                    <input name="gpa" class="form-control required" type="number" placeholder="enter gpa" >
+                                 </div>
+                              </div>
+
+                               <div class="col-sm-12">
+                                 <div class="form-group">
+                                 <label>Course</label>
+                                    <input name="course" class="form-control required" type="text" placeholder="Enter Course" >
+                                 </div>
+                              </div>
+
+                              
+                           
+                           </div>
+                          
+                          
+                           <div class="form-group">
+                              
+                              <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px" >Submit</button>
+                            
+                           </div>
+
+                             
+                           </div>
+                          
+                          
+                          
+                        </form>
+                   
+                     </div>
+                  </div>
+               </div>
+            </section>
+        
+         </div>
+         <!-- end main-content -->

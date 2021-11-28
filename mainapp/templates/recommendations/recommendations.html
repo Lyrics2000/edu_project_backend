@@ -1,0 +1,109 @@
+{% load static %}
+<!-- Section: home -->
+    <section id="home" class="divider parallax layer-overlay" data-bg-img="{% static 'images/bg/bg5.jpg' %}">
+      <div class="display-table">
+        <div class="display-table-cell">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-md-push-3">
+                <div class="text-center mb-60"><a href="#" class=""><img alt="" src="{% static 'images/logo-wide-white.png' %}"></a></div>
+                <div class="bg-lightest border-1px p-25">
+                  <h4 class="text-theme-colored text-uppercase m-0">Search For Recommendations</h4>
+                  <div class="line-bottom mb-30"></div>
+       
+                  <form id="appointment_form" name="appointment_form" class="mt-30" method="POST" action="{% url 'mainapp:recommendations' %}">
+                       {% csrf_token %}
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label >  Employement Status </label>
+                          <input name="employment_status" class="form-control" type="checkbox" required=""  aria-required="true">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label> Course </label>
+                          <select name="course" class="form-control" id="cars">
+                          {% if scholarships %}
+                          {% for s in scholarships %}
+                            <option value="{{s.course}}">{{s.course}}</option>
+                        
+
+                        {% endfor %}
+
+                        {% endif %}
+                        
+                        </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label> GPA Score </label>
+                          <input name="gpa_score" class="form-control required" type="number" placeholder="Enter GPA Score" aria-required="true">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label>Age </label>
+                      		<input name="age" class="form-control required " type="number" placeholder="Enter Age" aria-required="true">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label> Country </label>
+                                        <select name="country" class="form-control" id="cars">
+                          {% if scholarships %}
+                          {% for s in scholarships %}
+                            <option value="{{s.scholarship_country}}">{{s.scholarship_country}}</option>
+                        
+
+                        {% endfor %}
+
+                        {% endif %}
+                        
+                        </select>
+                        </div>
+                      </div>
+
+                       <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label> Scholarship Budget </label>
+                            <select name="scholarship_budget" class="form-control" id="cars">
+                       <option value="100000">Ksh 100000</option>
+                                       <option value="150000">Ksh 150000</option>
+                                       <option value="200000">Ksh 200000</option>
+                                       <option value="250000">Ksh 250000</option>
+                                       <option value="300000">Ksh 300000</option>
+                                    
+                        </select>
+                        </div>
+
+
+                      </div>
+
+                        <div class="col-sm-12">
+                        <div class="form-group mb-10">
+                        <label> Scholarship Type </label>
+                          <select name="scholarship_type" class="form-control" id="cars">
+
+                                        <option value="Full Scholarship">Full Scholarship</option>
+                                       <option value="Partial Scholarship">Partial Scholarship</option>
+                                       
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="form-group mb-0 mt-20">
+                      <input name="form_botcheck" class="form-control" type="hidden" value="">
+                      <button type="submit" class="btn btn-dark btn-theme-colored" data-loading-text="Please wait...">Submit</button>
+                    </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

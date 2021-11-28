@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'authentification',
+    'account',
     'djoser',
     "corsheaders",
     'mainapp'
@@ -98,7 +98,7 @@ REST_FRAMEWORK = {
 }
 
 
-AUTH_USER_MODEL = 'authentification.User'
+AUTH_USER_MODEL = 'account.User'
 
 
 DJOSER = {
@@ -167,3 +167,9 @@ MEDIA_ROOT = os.path.join('media_cdn')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'thomasambetsa@gmail.com'
+EMAIL_HOST_PASSWORD = 'wojjleviqxakkazs'
+EMAIL_PORT = 587

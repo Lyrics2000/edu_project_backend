@@ -12,66 +12,27 @@
           <div class="row">
             <div class="col-md-12">
               <div class="owl-carousel-4col" data-dots="true">
+               
+               {% if all_scholarship %}
+               {% for all in all_scholarship %}
                 <div class="item ">
                   <div class="service-block bg-white">
-                    <div class="thumb"> <img alt="featured project" src="{% static 'images/project/4.jpg' %}" class="img-fullwidth">
+                    <div class="thumb"> <img alt="featured project" src="{{all.scholarship_thumbnail.url}}" class="img-fullwidth">
                 
                     </div>
                     <div class="content text-left flip p-25 pt-0">
-                      <h4 class="line-bottom mb-10">JKUAT UNI</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
+                      <h4 class="line-bottom mb-10">{{all.school_name}}</h4>
+                      <p>{{all.scholarship_details}}</p>
                      <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
                     </div>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="service-block mb-md-30 bg-white">
-                    <div class="thumb"> <img alt="featured project" src="{% static 'images/project/5.jpg' %}" class="img-responsive img-fullwidth">
-          
-                    </div>
-                    <div class="content text-left flip p-25 pt-0">
-                      <h4 class="line-bottom mb-10">JKUAT UNI</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                     <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                   </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="service-block mb-md-30 bg-white">
-                    <div class="thumb"> <img alt="featured project" src="{% static 'images/project/6.jpg' %}" class="img-responsive img-fullwidth">
-                  
-                    </div>
-                    <div class="content text-left flip p-25 pt-0">
-                      <h4 class="line-bottom mb-10">JKUAT UNI</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                     <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                   </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="service-block mb-md-30 bg-white">
-                    <div class="thumb"> <img alt="featured project" src="{% static 'images/project/7.jpg' %}" class="img-responsive img-fullwidth">
-                   
-                    </div>
-                    <div class="content text-left flip p-25 pt-0">
-                      <h4 class="line-bottom mb-10">JKUAT UNI</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                      <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="service-block mb-md-30 bg-white">
-                    <div class="thumb"> <img alt="featured project" src="{% static 'images/project/8.jpg' %}" class="img-responsive img-fullwidth">
-                    
-                    </div>
-                    <div class="content text-left flip p-25 pt-0">
-                      <h4 class="line-bottom mb-10">JKUAT UNI</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam ipsum quis ipsum facilisis sit amet.</p>
-                      <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-                    </div>
-                  </div>
-                </div>
+
+                {% endfor %}
+
+                {% endif %}
+              
+
               </div>
             </div>
           </div>

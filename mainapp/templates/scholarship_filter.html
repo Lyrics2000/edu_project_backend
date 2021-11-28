@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+ <!-- Start main-content -->
+  <div class="main-content">
+
+  {% include './scholarship_list/inner_section.html' %}
+  {% include './scholarship_list/perfect_scholarship.html' %}
+   {% include './scholarship_list/seventy_scholarship.html' %}
+
+   {% include './scholarship_list/zero_percent_scholarship.html' %}
+
+
+  </div>
+
+
+{% endblock content %}

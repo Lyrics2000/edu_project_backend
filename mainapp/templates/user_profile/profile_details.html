@@ -1,0 +1,81 @@
+{% load static %}
+  <!-- Section: Doctor Details -->
+    <section class="">
+      <div class="container">
+        <div class="section-content">
+          <div class="row">
+            <div class="col-sx-12 col-sm-4 col-md-4">
+            {% if user_profile %}
+              <div class="doctor-thumb">
+              
+                <img src="{{user_profile.image.url}}" alt="">
+              </div>
+            {% endif %}
+              <div class="info p-20 bg-black-333">
+                <h4 class="text-uppercase text-white">{{request.user.username}}</h4>
+               
+                <ul class="list angle-double-right m-0">
+                  <li class="mt-0 text-gray-silver"><strong class="text-gray-lighter">First Name</strong><br>{{request.user.first_name}}</li>
+                  <li class="text-gray-silver"><strong class="text-gray-lighter">Last Name</strong><br>{{request.user.last_name}}</li>\
+                   <li class="text-gray-silver"><strong class="text-gray-lighter">Email</strong><br>{{request.user.email}}</li>
+                    <li class="text-gray-silver"><strong class="text-gray-lighter">Phone</strong><br>{{request.user.phone}}</li>
+                    <li class="text-gray-silver"><strong class="text-gray-lighter">Profile Type</strong><br>{{request.user.type}}</li>
+                </ul>
+             
+                <a class="btn btn-info btn-flat mt-10 mb-sm-30" href="{% url 'mainapp:edit_profile' %}">Edit Profile</a>
+                <a class="btn btn-danger btn-flat mt-10 mb-sm-30" href="{% url 'account:logout' %}">Logout</a>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8">
+              <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab" class="font-15 text-uppercase">Profile Details</span></a></li>
+                 
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="orders">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                       {% if user_profile  %}
+                         <tbody>
+                            <tr>
+                               <th scope="row">Country</th>
+                               <td>{{user_profile.country}}</td>
+                               
+                            </tr>
+                              <tr>
+                               <th scope="row">Permanent Address</th>
+                               <td>{{user_profile.permanent_address}}</td>
+                               
+                            </tr>
+
+                              <tr>
+                               <th scope="row">Current Address</th>
+                               <td>{{user_profile.physical_address}}</td>
+                               
+                            </tr>
+
+                              <tr>
+                               <th scope="row">Scholarship Type</th>
+                               <td>{{user_profile.scholarship_type}}</td>
+                               
+                            </tr>
+                         
+                          
+                         </tbody>
+                        {% endif %}
+                      </table>
+                    </div>
+                  </div>
+              
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
