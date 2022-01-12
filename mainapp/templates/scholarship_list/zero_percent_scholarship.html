@@ -4,32 +4,53 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 ">
-          <h1> Not qualified for this scholarships </h1>
+          <h1> Scholarships not qualified for </h1>
 
-          {% if zero_percent_filtered_scholarships %}
-          {% for all in zero_percent_filtered_scholarships %}
-            <div class="row mb-15">
-              <div class="col-sm-12 col-md-4">
-                <div class="thumb"> <img alt="featured project" src="{{all.scholarship_thumbnail.url}}" class="img-fullwidth"></div>
-              </div>
-              <div class="col-sm-12 col-md-8">
-                <h4 class="line-bottom mt-0 mt-sm-20">{{all.school_name}}</h4>
-                <ul class="review_text list-inline">
-        
-                  <li>
-                    <div class="star-rating" title="Rated 4.50 out of 5"><span style="width: 90%;"></span></div>
-                  </li>
-                </ul>
-                <p>{{all.scholarship_details}}</p>
-                <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="page-courses-accounting-technologies.html">view details</a>
-              </div>
-            </div>
-            <hr>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Scholarship Name</th>
+                <th scope="col">School Name</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Course</th>
+                <th scope="col">Budget</th>
+                <th scope="col">GPA</th>
+                <th scope="col">Reasons for not qualifying</th>
+                <th scope="col">View Details</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% if zero_percent_filtered_scholarships %}
+              {% for all in zero_percent_filtered_scholarships %}
+              <tr>
+                <th>{{all.scholarship_name}}</th>
+                <td>{{all.school_name}}</td>
+                <td>{{all.deadline_apply}}</td>
+                <td>{{all.course}}</td>
+                <td>{{all.scholarship_budget}}</td>
+                <td>{{all.gpa}}</td>
+                <td>
+                  <ul>
+                    <li>. Employment status do not match</li>
+                    <li>.Age do not match</li>
+                    <li>. do not match</li>
+                  </ul>
+                </td>
 
-          {% endfor %}
+                <td>
+                  <a type="button" class="btn btn-primary">View Details</a>
+                </td>
+              </tr>
 
-          {% endif %}
-           
+              {% endfor %}
+              {% endif %}
+             
+            </tbody>
+          </table>
+          
+          
+          
           </div>
      
         </div>

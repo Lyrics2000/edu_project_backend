@@ -17,15 +17,15 @@
                       <div class="col-sm-12">
                         <div class="form-group mb-10">
                         <label >  Employement Status </label>
-                          <input name="employment_status" class="form-control" type="checkbox" required=""  aria-required="true">
+                          <input name="employment_status" class="form-control" type="checkbox" >
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-group mb-10">
                         <label> Course </label>
                           <select name="course" class="form-control" id="cars">
-                          {% if scholarships %}
-                          {% for s in scholarships %}
+                          {% if all_courses %}
+                          {% for s in all_courses %}
                             <option value="{{s.course}}">{{s.course}}</option>
                         
 
@@ -39,7 +39,18 @@
                       <div class="col-sm-12">
                         <div class="form-group mb-10">
                         <label> GPA Score </label>
-                          <input name="gpa_score" class="form-control required" type="number" placeholder="Enter GPA Score" aria-required="true">
+
+                          <select name="gpa_score" class="form-control" id="cars">
+                            {% if all_gpas %}
+                            {% for ps in all_gpas %}
+                              <option value="{{ps.gpa}}">{{ps.gpa}}</option>
+                          
+  
+                          {% endfor %}
+  
+                          {% endif %}
+                          
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-12">
@@ -52,8 +63,8 @@
                         <div class="form-group mb-10">
                         <label> Country </label>
                                         <select name="country" class="form-control" id="cars">
-                          {% if scholarships %}
-                          {% for s in scholarships %}
+                          {% if all_countries %}
+                          {% for s in all_countries %}
                             <option value="{{s.scholarship_country}}">{{s.scholarship_country}}</option>
                         
 
@@ -69,11 +80,17 @@
                         <div class="form-group mb-10">
                         <label> Scholarship Budget </label>
                             <select name="scholarship_budget" class="form-control" id="cars">
-                       <option value="100000">Ksh 100000</option>
-                                       <option value="150000">Ksh 150000</option>
-                                       <option value="200000">Ksh 200000</option>
-                                       <option value="250000">Ksh 250000</option>
-                                       <option value="300000">Ksh 300000</option>
+
+                              {% if all_budget %}
+                              {% for s in all_budget %}
+                                <option value="{{s.scholarship_budget}}">Ksh {{s.scholarship_budget}}</option>
+                            
+    
+                            {% endfor %}
+    
+                            {% endif %}
+                            
+                     
                                     
                         </select>
                         </div>

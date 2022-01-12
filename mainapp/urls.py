@@ -6,7 +6,8 @@ scholarship,
 user_profile,
 edit_profile,
 upload_scholarship,
-recommendations)
+recommendations,
+scholarship_detailed)
 
 app_name = 'mainapp'
 urlpatterns = [
@@ -16,6 +17,7 @@ urlpatterns = [
     path('user_profile/',user_profile,name="user_profile"),
     path('edit_profile/',edit_profile,name="edit_profile"),
     path('upload_scholarship/',upload_scholarship,name="upload_scholarship"),
-    path('recommendations/',recommendations,name="recommendations")
+    path('recommendations/',recommendations,name="recommendations"),
+    path("scholarship_detailed/<id>",scholarship_detailed,name="scholarship_detailed")
   
 ]

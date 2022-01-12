@@ -2,5 +2,136 @@
 {% load static %}
 {% block content %}
 
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/bg3.jpg' %}">
+       <div class="container pt-70 pb-20">
+          <!-- Section Content -->
+          <div class="section-content">
+             <div class="row">
+                <div class="col-md-12">
+                   <h2 class="title text-white">Scholarship Details</h2>
+                  
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+    <!-- Section: Blog -->
+    <section>
+       <div class="container">
+          <div class="row">
+             <div class="col-md-8 blog-pull-right">
+                <div class="single-service">
+                   <img style="width:100%;" src="{{detailed.scholarship_thumbnail.url}}" alt="">
+                   <h3 class="text-theme-colored line-bottom text-theme-colored">{{detailed.scholarship_name}}</h3>
+                   <h4 class="mt-0"><span class="text-theme-color-2">{{detailed.school_name}}</span> </h4>
+                   <ul class="review_text list-inline">
+                      <li>
+                         <div class="star-rating" title="Rated 4.50 out of 5"><span style="width: 90%;">4.50</span></div>
+                      </li>
+                   </ul>
+                   
+                   <p>{{detailed.scholarship_details| safe}}</p>
+
+                   <h4 class="line-bottom mt-20 mb-20 text-theme-colored">Scholarship Requirements</h4>
+                   <ul id="myTab" class="nav nav-tabs boot-tabs">
+                      <li class="active"><a href="#small" data-toggle="tab">Requirements</a></li>
+                     
+                   </ul>
+                   <div id="myTabContent" class="tab-content">
+                      <div class="tab-pane fade in active" id="small">
+                         <table class="table table-bordered">
+                            <tr>
+                               <td class="text-center font-16 font-weight-600 bg-theme-color-2 text-white" colspan="4">Requirements</td>
+                            </tr>
+                            <tr>
+                               <th>Requirements</th>
+                               <th>Explanation</th>
+                              
+                            </tr>
+                            <tbody>
+                               <tr>
+                                  <th scope="row">Course</th>
+                                  <td>{{detailed.course}}</td>
+                                 
+                               </tr>
+
+                               <tr>
+                                <th scope="row">Scholarship Budget</th>
+                                <td>{{detailed.scholarship_budget}}</td>
+                               
+                             </tr>
+
+                             <tr>
+                                <th scope="row">Scholarship Type</th>
+                                <td>{{detailed.scholarship_type}}</td>
+                               
+                             </tr>
+
+                             <tr>
+                                <th scope="row">Scholarship Country</th>
+                                <td>{{detailed.scholarship_country}}</td>
+                               
+                             </tr>
+
+                             <tr>
+                                <th scope="row">Scholarship GPA</th>
+                                <td>{{detailed.gpa}}</td>
+                               
+                             </tr>
+
+                             <tr>
+                                <th scope="row">Scholarship Age</th>
+                                <td>{{detailed.scholarship_age}}</td>
+                               
+                             </tr>
+
+
+                             <tr>
+                                <th scope="row">Scholarship Employment</th>
+                                <td>{{detailed.scholarship_employment}}</td>
+                               
+                             </tr>
+                            
+                            
+                            </tbody>
+                         </table>
+                      </div>
+                      
+                    
+                   </div>
+                </div>
+             </div>
+             <div class="col-sm-12 col-md-4">
+                <div class="sidebar sidebar-left mt-sm-30 ml-40">
+                   
+                   <div class="widget">
+                      <h4 class="widget-title line-bottom">Scholarship  <span class="text-theme-color-2">Deadline</span></h4>
+                      <div class="opening-hours">
+                         <ul class="list-border">
+                            <li class="clearfix">
+                               <span> Deadline Apply :  </span>
+                               <div class="value pull-right"> {{detailed.deadline_apply}} </div>
+                            </li>
+                            <li class="clearfix">
+                               <span> Deadline Review :</span>
+                               <div class="value pull-right"> {{detailed.deadline_review}} </div>
+                            </li>
+                            
+                           
+                         </ul>
+                      </div>
+
+                      <a href="{{detailed.web_link}}" class="btn btn-primary">Apply</a>
+                   </div>
+               
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </div>
+ 
 
 {% endblock content %}

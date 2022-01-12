@@ -4,6 +4,9 @@ from django.http import request
 from account.models import User
 import os
 import random
+from django.shortcuts import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 # Create your models here.
 
@@ -82,10 +85,27 @@ class Scholarship(BaseModel):
     scholarship_budget =  models.DecimalField(max_digits=20,decimal_places=2,blank=True,null=True)
     scholarship_type =  models.CharField(max_length=255,blank=True,null =True)
     scholarship_country =  models.CharField(max_length=255)
-    gpa =  models.CharField(max_length=255,blank=True,null=True)
-    scholarship_age =  models.IntegerField(blank=True,null=True)
+    gpa =  models.DecimalField(default=0.5,max_digits=20,decimal_places=2,
+     validators=[
+            MaxValueValidator(5),
+            MinValueValidator(0.5)
+        ])
+    
+    scholarship_age =  models.IntegerField(default=0,
+            validators=[
+            MaxValueValidator(25),
+            MinValueValidator(0)
+        ]
+
+    )
     scholarship_employment =  models.BooleanField(default=False)
     scholarship_thumbnail =  models.ImageField(upload_to =  upload_file_path,blank = True,null =  True)
+
+    def get_absolute_url(self):
+        return reverse("mainapp:scholarship_detailed", kwargs={
+            'id': self.id
+        })
+
    
 
     def __str__(self):

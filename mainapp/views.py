@@ -1,3 +1,4 @@
+
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -165,8 +166,16 @@ def upload_scholarship(request):
 @login_required(login_url="account:sign_in")
 def recommendations(request):
     scholarships = Scholarship.objects.all()
+    all_gpas = Scholarship.objects.all().values('gpa').distinct()
+    all_countries = Scholarship.objects.all().values('scholarship_country').distinct()
+    all_courses = Scholarship.objects.all().values('course').distinct()
+    all_budget = Scholarship.objects.all().values('scholarship_budget').distinct()
     context = {
-        'scholarships' :  scholarships
+        'scholarships' :  scholarships,
+        'all_gpas':all_gpas,
+        'all_countries':all_countries,
+        'all_courses':all_courses,
+        'all_budget':all_budget
     }
     if request.method ==  "POST":
         employment_status =  request.POST.get("employment_status")
@@ -176,78 +185,42 @@ def recommendations(request):
         country =  request.POST.get("country")
         scholarship_budget =  request.POST.get("scholarship_budget")
         scholarship_type =  request.POST.get("scholarship_type")
-        if employment_status == 'on':
-            print("starting...")
-            perfect_filtered_scholarships =  Scholarship.objects.filter(scholarship_employment =True,
-            course =  course,
-            gpa = gpa_score,
-            scholarship_age = age,
-            scholarship_country = country,
-            scholarship_budget = scholarship_budget,
-            scholarship_type = scholarship_type )
-
-           
-
-            fifty_percent_filtered = Scholarship.objects.filter(scholarship_employment =True,
-            course =  course,
-            gpa = gpa_score,
-            scholarship_budget = scholarship_budget,
-            )
-
-            zero_percent_filtered_scholarships =  Scholarship.objects.filter(~Q(scholarship_employment =True,
-            course =  course,
-            gpa = gpa_score,
-            scholarship_age = age,
-            scholarship_country = country,
-            scholarship_budget = scholarship_budget,
-            scholarship_type = scholarship_type ))
-
-            print(perfect_filtered_scholarships)
+        print("emplyment status",employment_status)
+        print("course ",course)
+        print("gpa score ",gpa_score)
+        print("age",age)
+        print("country ",country)
+        print("budget ",scholarship_budget)
+        print("type ",scholarship_type)
 
 
-            context = {
-                'perfect_filtered_scholarships' : perfect_filtered_scholarships,
-                'seventy_percent_filtered' : fifty_percent_filtered,
-                'zero_percent_filtered_scholarships' : zero_percent_filtered_scholarships
-            }
+        
+        print("starting...")
+        perfect_filtered_scholarships =  Scholarship.objects.filter(Q(scholarship_employment =True if employment_status == 'on' else False,course =  course,gpa = float(gpa_score),scholarship_age = age,scholarship_country = country,scholarship_budget = scholarship_budget,scholarship_type = scholarship_type ))
 
-            return render(request,'scholarship_filter.html',context)
+        fifty_percent_filtered = Scholarship.objects.filter(course =  course,gpa = gpa_score,scholarship_budget = scholarship_budget)
 
-        else:
-            print("starting...")
-            perfect_filtered_scholarships =  Scholarship.objects.filter(scholarship_employment =False,
-            course =  course,
-            gpa = gpa_score,
-            scholarship_age = age,
-            scholarship_country = country,
-            scholarship_budget = scholarship_budget,
-            scholarship_type = scholarship_type )
+        zero_percent_filtered_scholarships =  Scholarship.objects.filter(~Q(scholarship_employment =True if employment_status == 'on' else False,course =  course,gpa = gpa_score,scholarship_age = age,scholarship_country = country,scholarship_budget = scholarship_budget,scholarship_type = scholarship_type ))
 
-           
-
-            fifty_percent_filtered = Scholarship.objects.filter(scholarship_employment =False,
-            course =  course,
-            gpa = gpa_score,
-            scholarship_budget = scholarship_budget,
-            )
-
-            zero_percent_filtered_scholarships =  Scholarship.objects.filter(~Q(scholarship_employment =False,
-            course =  course,
-            gpa = gpa_score,
-            scholarship_age = age,
-            scholarship_country = country,
-            scholarship_budget = scholarship_budget,
-            scholarship_type = scholarship_type ))
-
-            print(perfect_filtered_scholarships)
+        print(perfect_filtered_scholarships)
 
 
-            context = {
-                'perfect_filtered_scholarships' : perfect_filtered_scholarships,
-                'seventy_percent_filtered' : fifty_percent_filtered,
-                'zero_percent_filtered_scholarships' : zero_percent_filtered_scholarships
-            }
+        context = {
+            'perfect_filtered_scholarships' : perfect_filtered_scholarships,
+            'seventy_percent_filtered' : fifty_percent_filtered,
+            'zero_percent_filtered_scholarships' : zero_percent_filtered_scholarships
+        }
 
-            return render(request,'scholarship_filter.html',context)
+        return render(request,'scholarship_filter.html',context)
 
+        
     return render(request,'recommendations.html',context)
+
+
+
+def scholarship_detailed(request,id):
+    kii =  Scholarship.objects.get(id =  id)
+    context = {
+        'detailed' : kii
+    }
+    return render(request,'scholarship_detailed_page.html',context)
